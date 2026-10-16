@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<title>Qum zanjiri — foydalanuvchilar</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="/page.css">
+</head>
+<body>
+<main class="page">
+  <div class="head">
+    <div class="brand"><h1>Foydalanuvchilar</h1><small id="who">…</small></div>
+    <nav><a href="/">← Sahifaga</a><button class="link" type="button" id="out">Chiqish</button></nav>
+  </div>
+
+  <section class="card" id="mine">
+    <h2>Parolni almashtirish</h2>
+    <form id="fp" class="grid" novalidate>
+      <div class="fld"><label for="po">Joriy parol</label><input id="po" type="password" autocomplete="current-password"></div>
+      <div class="fld"><label for="pn">Yangi parol</label><input id="pn" type="password" autocomplete="new-password"></div>
+      <div class="fld"><label for="pr">Yangi parol (takror)</label><input id="pr" type="password" autocomplete="new-password"></div>
+      <div class="actions" style="grid-column:1/-1"><button class="pri" type="submit">Saqlash</button><span class="note">Boshqa qurilmalardagi kirishlar yopiladi.</span></div>
+    </form>
+    <div class="msg" id="mp" hidden role="alert"></div>
+  </section>
+
+  <div id="admin" hidden style="display:contents">
+    <section class="card">
+      <div class="head"><h2>Ro'yxat</h2><button class="pri" type="button" id="add">+ Yangi foydalanuvchi</button></div>
+      <p class="note">Administrator — hammasi: normativlar, sozlamalar, foydalanuvchilar, zaxira. Operator — jurnallarga yozuv kiritadi va tuzatadi, hisobotlarni ko'radi, normativlarni o'zgartira olmaydi. Ko'ruvchi — faqat ko'radi va Excelga yuklab oladi. Uchastka — operatorga «Kiritish» bo'limida birinchi ochiladigan joy.</p>
+      <div class="tw"><table id="tbl"><thead><tr><th>Login</th><th>Ism</th><th>Rol</th><th>Uchastka</th><th>Holat</th><th>Oxirgi kirish</th><th></th></tr></thead><tbody></tbody></table></div>
+      <div class="msg" id="mu" hidden role="alert"></div>
+    </section>
+
+    <section class="card" id="ed" hidden>
+      <h2 id="edh">Yangi foydalanuvchi</h2>
+      <form id="fe" class="grid" novalidate>
+        <div class="fld"><label for="e-login">Login</label><input id="e-login" autocapitalize="none" spellcheck="false" autocomplete="off" placeholder="masalan: chust.operator"></div>
+        <div class="fld"><label for="e-name">Ism</label><input id="e-name" autocomplete="off"></div>
+        <div class="fld"><label for="e-role">Rol</label><select id="e-role"><option value="operator">Operator</option><option value="viewer">Ko'ruvchi</option><option value="admin">Administrator</option></select></div>
+        <div class="fld"><label for="e-site">Uchastka</label><select id="e-site"><option value="">—</option><option value="SAM">Samarqand</option><option value="QIB">Qibray</option><option value="CHU">Chust</option><option value="MEG">Megaton</option></select></div>
+        <div class="fld" id="e-pw-f"><label for="e-pw">Parol</label><input id="e-pw" type="text" autocomplete="off" spellcheck="false"></div>
+        <div class="actions" style="grid-column:1/-1"><button class="pri" type="submit" id="e-save">Saqlash</button><button type="button" id="e-gen">Parol yaratish</button><button type="button" class="link" id="e-cancel">Bekor qilish</button></div>
+      </form>
+      <div class="msg" id="me" hidden role="alert"></div>
+    </section>
+
+    <section class="card">
+      <h2>Zaxira nusxa</h2>
+      <p class="note">Barcha jurnallar, sozlamalar va o'zgarishlar tarixi bitta JSON faylga yuklanadi (foydalanuvchilar va parollar kirmaydi). Haftada kamida bir marta yuklab, kompyuterda saqlang.</p>
+      <div class="actions"><button class="pri" type="button" id="bk">Zaxira nusxani yuklab olish</button><span class="note" id="bkn"></span></div>
+      <h3 style="font-size:15px;margin-top:6px">Fayldan tiklash</h3>
+      <div class="grid">
+        <div class="fld"><label for="rf">Zaxira fayli</label><input id="rf" type="file" accept=".json,application/json"></div>
+        <div class="fld"><label for="rm">Bazada bor hujjatlar</label><select id="rm"><option value="add">Tegilmasin — faqat yo'qlari qo'shilsin</option><option value="replace">Fayldagisi bilan almashtirilsin</option></select></div>
+      </div>
+      <label class="note" id="rcw" hidden><input type="checkbox" id="rc" style="width:auto"> Tushunaman: bazadagi hujjatlar fayldagi eski holat bilan almashtiriladi va fayldan keyin kiritilgan yozuvlar yo'qoladi.</label>
+      <div class="msg" id="mr" hidden></div>
+      <progress id="rpg" max="1" value="0" hidden></progress>
+      <div class="actions"><button type="button" id="rb" disabled>Tiklash</button></div>
+    </section>
+
+    <section class="card">
+      <div class="head"><h2>Server jurnali</h2><button class="link" type="button" id="al">Yangilash</button></div>
+      <p class="note">Serverga kelgan har bir yozish amali: kim, qachon, qaysi hujjat. O'chirib yoki o'zgartirib bo'lmaydi. Oxirgi 200 tasi.</p>
+      <div class="tw"><table id="atbl"><thead><tr><th>Vaqt</th><th>Kim</th><th>Amal</th><th>Hujjat</th><th>Tafsilot</th></tr></thead><tbody></tbody></table></div>
+    </section>
+  </div>
+</main>
+<script src="/page.js"></script>
+<script src="/backup.js"></script>
+<script src="/users.js"></script>
+</body>
+</html>

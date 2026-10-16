@@ -1,0 +1,21 @@
+{
+  "name": "qum-zanjiri",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Qum zanjiri — qum tannarxi va norma/fakt nazorati (Vercel + Neon)",
+  "type": "module",
+  "engines": {
+    "node": "22.x"
+  },
+  "scripts": {
+    "dev": "node scripts/dev.mjs",
+    "pack": "node scripts/pack.mjs",
+    "test": "node test/run.mjs"
+  },
+  "dependencies": {
+    "@neondatabase/serverless": "1.2.0"
+  },
+  "devDependencies": {
+    "@electric-sql/pglite": "0.5.8"
+  }
+}
